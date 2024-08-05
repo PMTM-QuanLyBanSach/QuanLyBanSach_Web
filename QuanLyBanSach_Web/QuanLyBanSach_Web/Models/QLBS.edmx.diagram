@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f86b76bf967a494fa5f725f060b65f15" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyBanSachModel.ChiTietDonHang" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.DanhMucSach" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.DM_ManHinh" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.DonHang" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.KhachHang" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.QL_NguoiDung" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.QL_NguoiDungNhomNguoiDung" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.QL_NhomNguoiDung" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.QL_PhanQuyen" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.Sach" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.TacGia" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_ChiTietDonHang_DonHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_ChiTietDonHang_Sach" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_Sach_DanhMucSach" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_DonHang_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_Sach_TacGia" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

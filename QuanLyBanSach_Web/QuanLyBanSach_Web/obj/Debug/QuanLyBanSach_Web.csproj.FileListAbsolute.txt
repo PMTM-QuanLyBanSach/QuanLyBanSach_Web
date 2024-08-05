@@ -47,3 +47,7 @@ D:\Nam4\HK1\PTUDTM\DoAn\QuanLyBanSach_Web\QuanLyBanSach_Web\QuanLyBanSach_Web\ob
 D:\Nam4\HK1\PTUDTM\DoAn\QuanLyBanSach_Web\QuanLyBanSach_Web\QuanLyBanSach_Web\obj\Debug\QuanLyBanSach_Web.csproj.CopyComplete
 D:\Nam4\HK1\PTUDTM\DoAn\QuanLyBanSach_Web\QuanLyBanSach_Web\QuanLyBanSach_Web\obj\Debug\QuanLyBanSach_Web.dll
 D:\Nam4\HK1\PTUDTM\DoAn\QuanLyBanSach_Web\QuanLyBanSach_Web\QuanLyBanSach_Web\obj\Debug\QuanLyBanSach_Web.pdb
+D:\Nam4\HK1\PTUDTM\DoAn\QuanLyBanSach_Web\QuanLyBanSach_Web\QuanLyBanSach_Web\bin\EntityFramework.dll
+D:\Nam4\HK1\PTUDTM\DoAn\QuanLyBanSach_Web\QuanLyBanSach_Web\QuanLyBanSach_Web\bin\EntityFramework.SqlServer.dll
+D:\Nam4\HK1\PTUDTM\DoAn\QuanLyBanSach_Web\QuanLyBanSach_Web\QuanLyBanSach_Web\bin\EntityFramework.xml
+D:\Nam4\HK1\PTUDTM\DoAn\QuanLyBanSach_Web\QuanLyBanSach_Web\QuanLyBanSach_Web\bin\EntityFramework.SqlServer.xml

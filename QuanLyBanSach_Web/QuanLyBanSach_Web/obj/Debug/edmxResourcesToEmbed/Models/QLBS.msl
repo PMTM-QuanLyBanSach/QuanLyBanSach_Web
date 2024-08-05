@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QuanLyBanSachModelStoreContainer" CdmEntityContainer="QuanLyBanSachEntities">
+    <EntitySetMapping Name="ChiTietDonHang">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.ChiTietDonHang">
+        <MappingFragment StoreEntitySet="ChiTietDonHang">
+          <ScalarProperty Name="MaDH" ColumnName="MaDH" />
+          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DanhMucSach">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.DanhMucSach">
+        <MappingFragment StoreEntitySet="DanhMucSach">
+          <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
+          <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DM_ManHinh">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.DM_ManHinh">
+        <MappingFragment StoreEntitySet="DM_ManHinh">
+          <ScalarProperty Name="MaManHinh" ColumnName="MaManHinh" />
+          <ScalarProperty Name="TenManHinh" ColumnName="TenManHinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DonHang">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.DonHang">
+        <MappingFragment StoreEntitySet="DonHang">
+          <ScalarProperty Name="MaDH" ColumnName="MaDH" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhachHang">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.KhachHang">
+        <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QL_NguoiDung">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.QL_NguoiDung">
+        <MappingFragment StoreEntitySet="QL_NguoiDung">
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="HoatDong" ColumnName="HoatDong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QL_NguoiDungNhomNguoiDung">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.QL_NguoiDungNhomNguoiDung">
+        <MappingFragment StoreEntitySet="QL_NguoiDungNhomNguoiDung">
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="MaNhomNguoiDung" ColumnName="MaNhomNguoiDung" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QL_NhomNguoiDung">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.QL_NhomNguoiDung">
+        <MappingFragment StoreEntitySet="QL_NhomNguoiDung">
+          <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+          <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QL_PhanQuyen">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.QL_PhanQuyen">
+        <MappingFragment StoreEntitySet="QL_PhanQuyen">
+          <ScalarProperty Name="MaNhomNguoiDung" ColumnName="MaNhomNguoiDung" />
+          <ScalarProperty Name="MaManHinh" ColumnName="MaManHinh" />
+          <ScalarProperty Name="CoQuyen" ColumnName="CoQuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sach">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.Sach">
+        <MappingFragment StoreEntitySet="Sach">
+          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+          <ScalarProperty Name="MaTG" ColumnName="MaTG" />
+          <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+          <ScalarProperty Name="SLKho" ColumnName="SLKho" />
+          <ScalarProperty Name="TenSach" ColumnName="TenSach" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TacGia">
+      <EntityTypeMapping TypeName="QuanLyBanSachModel.TacGia">
+        <MappingFragment StoreEntitySet="TacGia">
+          <ScalarProperty Name="MaTG" ColumnName="MaTG" />
+          <ScalarProperty Name="TenTG" ColumnName="TenTG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

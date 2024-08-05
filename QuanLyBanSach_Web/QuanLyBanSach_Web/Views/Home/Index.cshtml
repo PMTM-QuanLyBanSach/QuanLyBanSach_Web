@@ -1,8 +1,27 @@
-﻿
+﻿@model List<QuanLyBanSach_Web.Models.KhachHang>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
 <h2>Index</h2>
+<table>
+    <tr>
+        <th>Mã khách hàng</th>
+        <th>Tên khách hàng</th>
+        <th>Địa chỉ</th>
+        <th>Số điện thoại</th>
+        <th>Email</th>
+    </tr>
+    @foreach(var item in Model)
+            {
+<tr>
+    <td>@item.MaKH</td>
+    <td>@item.TenKH</td>
+    <td>@item.DiaChi</td>
+    <td>@item.SDT</td>
+    <td>@item.Email</td>
+</tr>
 
+            }
+</table>

@@ -43,7 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -89,6 +98,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Models\QLBS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>QLBS.Context.cs</LastGenOutput>
+      <DependentUpon>QLBS.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\QLBS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLBS.edmx</DependentUpon>
+      <LastGenOutput>QLBS.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -97,10 +116,65 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChiTietDonHang.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhMucSach.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DM_ManHinh.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonHang.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLBS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLBS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QLBS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QL_NguoiDung.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QL_NguoiDungNhomNguoiDung.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QL_NhomNguoiDung.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QL_PhanQuyen.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sach.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TacGia.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <EntityDeploy Include="Models\QLBS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLBS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QLBS.edmx.diagram">
+      <DependentUpon>QLBS.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -113,7 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
