@@ -12,13 +12,14 @@ namespace QuanLyBanSach_Web.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class QL_NguoiDungNhomNguoiDung
+    public partial class GioHang
     {
-        public string TenDangNhap { get; set; }
-        public string MaNhomNguoiDung { get; set; }
-        public string GhiChu { get; set; }
+        public string MaKH { get; set; }
+        public string MaSach { get; set; }
+        public Nullable<int> SoLuong { get; set; }
+        public Nullable<decimal> GiaBan { get; set; }
     
-        public virtual QL_NguoiDung QL_NguoiDung { get; set; }
-        public virtual QL_NhomNguoiDung QL_NhomNguoiDung { get; set; }
+        public virtual KhachHang KhachHang { get; set; }
+        public virtual Sach Sach { get; set; }
     }
 }

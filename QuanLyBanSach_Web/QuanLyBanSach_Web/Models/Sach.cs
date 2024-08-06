@@ -18,6 +18,7 @@ namespace QuanLyBanSach_Web.Models
         public Sach()
         {
             this.ChiTietDonHang = new HashSet<ChiTietDonHang>();
+            this.GioHang = new HashSet<GioHang>();
         }
     
         public string MaSach { get; set; }
@@ -26,10 +27,13 @@ namespace QuanLyBanSach_Web.Models
         public Nullable<decimal> GiaBan { get; set; }
         public Nullable<int> SLKho { get; set; }
         public string TenSach { get; set; }
+        public string ImageURL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHang { get; set; }
         public virtual DanhMucSach DanhMucSach { get; set; }
         public virtual TacGia TacGia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GioHang> GioHang { get; set; }
     }
 }

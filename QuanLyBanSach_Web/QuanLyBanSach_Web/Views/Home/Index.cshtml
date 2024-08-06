@@ -1,27 +1,79 @@
-﻿@model List<QuanLyBanSach_Web.Models.KhachHang>
+﻿@model List<QuanLyBanSach_Web.Models.Sach>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
-<h2>Index</h2>
-<table>
-    <tr>
-        <th>Mã khách hàng</th>
-        <th>Tên khách hàng</th>
-        <th>Địa chỉ</th>
-        <th>Số điện thoại</th>
-        <th>Email</th>
-    </tr>
-    @foreach(var item in Model)
-            {
-<tr>
-    <td>@item.MaKH</td>
-    <td>@item.TenKH</td>
-    <td>@item.DiaChi</td>
-    <td>@item.SDT</td>
-    <td>@item.Email</td>
-</tr>
-
+<div class="container-fluid mt-5">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card mb-3">
+                    <div class="card-body text-center" style="height: 450px">
+                        <a href="/Home/Detail/@item.MaSach"><img class="card-img-top" src="@item.ImageURL" /></a>
+                        <p class="card-text fs-5">@item.TenSach</p>
+                        <p class="card-text text-danger fw-bold">@item.GiaBan.ToString()0 VNĐ</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        @using (Html.BeginForm("Add", "Cart", FormMethod.Get))
+                        {
+                            <button class="btn btn-primary w-25" type="submit" name="id" value="@item.MaSach">Buy</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-6">
+            @{
+                int PrevP = ViewBag.Page - 1;
+                if (PrevP <= 0)
+                {
+                    PrevP = 1;
+                }
+                int NextP = ViewBag.Page + 1;
+                if (NextP > ViewBag.NoPages)
+                {
+                    NextP = ViewBag.NoPages;
+                }
             }
-</table>
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="/Home/Index?sort=@ViewBag.SortCol&page=@PrevP">PrevP </a>
+                </li>
+                @for (int i = 0; i < ViewBag.NoPages; i++)
+                {
+                    if (i + 1 == ViewBag.Page)
+                    {
+                        <li class="page-item active">
+                            <a class="page-link" href="/Home/Index?sort=@ViewBag.sort&page=@(i+1)">@(i + 1)</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="/Home/Index?sort=@ViewBag.sort&page=@(i+1)">@(i + 1)</a>
+                        </li>
+                    }
+                }
+                <li class="page-item">
+                    <a class="page-link" href="/Home/Index?sort=@ViewBag.sort&page=@NextP">NextP </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#sort').change(function () {
+            $('#MyForm').submit();
+        });
+    });
+</script>
+
+

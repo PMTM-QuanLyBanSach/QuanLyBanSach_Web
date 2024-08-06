@@ -14,8 +14,19 @@ namespace QuanLyBanSach_Web.Models
     
     public partial class QL_NguoiDung
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public QL_NguoiDung()
+        {
+            this.QL_NguoiDungNhomNguoiDung = new HashSet<QL_NguoiDungNhomNguoiDung>();
+        }
+    
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
         public Nullable<bool> HoatDong { get; set; }
+        public string MaNV { get; set; }
+    
+        public virtual NhanVien NhanVien { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<QL_NguoiDungNhomNguoiDung> QL_NguoiDungNhomNguoiDung { get; set; }
     }
 }

@@ -30,8 +30,19 @@
     </Key>
     <Property Name="MaDH" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="MaKH" Type="char" MaxLength="5" />
+    <Property Name="MaNV" Type="char" MaxLength="5" />
     <Property Name="NgayDat" Type="date" />
     <Property Name="TongTien" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="GioHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+      <PropertyRef Name="MaSach" />
+    </Key>
+    <Property Name="MaKH" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="MaSach" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="SoLuong" Type="int" />
+    <Property Name="GiaBan" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>
@@ -43,6 +54,17 @@
     <Property Name="SDT" Type="char" MaxLength="11" />
     <Property Name="Email" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="TenNV" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="SDT" Type="char" MaxLength="11" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="ChucVu" Type="nvarchar" MaxLength="30" />
+  </EntityType>
   <EntityType Name="QL_NguoiDung">
     <Key>
       <PropertyRef Name="TenDangNhap" />
@@ -50,6 +72,7 @@
     <Property Name="TenDangNhap" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="MatKhau" Type="varchar" MaxLength="100" />
     <Property Name="HoatDong" Type="bit" />
+    <Property Name="MaNV" Type="char" MaxLength="5" />
   </EntityType>
   <EntityType Name="QL_NguoiDungNhomNguoiDung">
     <Key>
@@ -73,8 +96,8 @@
       <PropertyRef Name="MaNhomNguoiDung" />
       <PropertyRef Name="MaManHinh" />
     </Key>
-    <Property Name="MaNhomNguoiDung" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="MaManHinh" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaNhomNguoiDung" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MaManHinh" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CoQuyen" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Sach">
@@ -87,6 +110,7 @@
     <Property Name="GiaBan" Type="decimal" Precision="10" Scale="2" />
     <Property Name="SLKho" Type="int" />
     <Property Name="TenSach" Type="nvarchar" MaxLength="200" />
+    <Property Name="ImageURL" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="TacGia">
     <Key>
@@ -131,6 +155,102 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DonHang_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="DonHang" Type="Self.DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GioHang_DonHang">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="1" />
+    <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="GioHang">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GioHang_Sach">
+    <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
+    <End Role="GioHang" Type="Self.GioHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="MaSach" />
+      </Principal>
+      <Dependent Role="GioHang">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QL_NguoiDung_NhanVien">
+    <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+    <End Role="QL_NguoiDung" Type="Self.QL_NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="QL_NguoiDung">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QL_NguoiDungNhomNguoiDung_QL_NguoiDung">
+    <End Role="QL_NguoiDung" Type="Self.QL_NguoiDung" Multiplicity="1" />
+    <End Role="QL_NguoiDungNhomNguoiDung" Type="Self.QL_NguoiDungNhomNguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QL_NguoiDung">
+        <PropertyRef Name="TenDangNhap" />
+      </Principal>
+      <Dependent Role="QL_NguoiDungNhomNguoiDung">
+        <PropertyRef Name="TenDangNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QL_NguoiDungNhomNguoiDung_QL_NhomNguoiDung">
+    <End Role="QL_NhomNguoiDung" Type="Self.QL_NhomNguoiDung" Multiplicity="1" />
+    <End Role="QL_NguoiDungNhomNguoiDung" Type="Self.QL_NguoiDungNhomNguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QL_NhomNguoiDung">
+        <PropertyRef Name="MaNhom" />
+      </Principal>
+      <Dependent Role="QL_NguoiDungNhomNguoiDung">
+        <PropertyRef Name="MaNhomNguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QL_PhanQuyen_DM_ManHinh">
+    <End Role="DM_ManHinh" Type="Self.DM_ManHinh" Multiplicity="1" />
+    <End Role="QL_PhanQuyen" Type="Self.QL_PhanQuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DM_ManHinh">
+        <PropertyRef Name="MaManHinh" />
+      </Principal>
+      <Dependent Role="QL_PhanQuyen">
+        <PropertyRef Name="MaManHinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QL_PhanQuyen_QL_NhomNguoiDung">
+    <End Role="QL_NhomNguoiDung" Type="Self.QL_NhomNguoiDung" Multiplicity="1" />
+    <End Role="QL_PhanQuyen" Type="Self.QL_PhanQuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QL_NhomNguoiDung">
+        <PropertyRef Name="MaNhom" />
+      </Principal>
+      <Dependent Role="QL_PhanQuyen">
+        <PropertyRef Name="MaNhomNguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Sach_DanhMucSach">
     <End Role="DanhMucSach" Type="Self.DanhMucSach" Multiplicity="0..1" />
     <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
@@ -160,7 +280,9 @@
     <EntitySet Name="DanhMucSach" EntityType="Self.DanhMucSach" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DM_ManHinh" EntityType="Self.DM_ManHinh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DonHang" EntityType="Self.DonHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GioHang" EntityType="Self.GioHang" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KhachHang" EntityType="Self.KhachHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QL_NguoiDung" EntityType="Self.QL_NguoiDung" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QL_NguoiDungNhomNguoiDung" EntityType="Self.QL_NguoiDungNhomNguoiDung" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QL_NhomNguoiDung" EntityType="Self.QL_NhomNguoiDung" Schema="dbo" store:Type="Tables" />
@@ -178,6 +300,38 @@
     <AssociationSet Name="FK_DonHang_KhachHang" Association="Self.FK_DonHang_KhachHang">
       <End Role="KhachHang" EntitySet="KhachHang" />
       <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonHang_NhanVien" Association="Self.FK_DonHang_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GioHang_DonHang" Association="Self.FK_GioHang_DonHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="GioHang" EntitySet="GioHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GioHang_Sach" Association="Self.FK_GioHang_Sach">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="GioHang" EntitySet="GioHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QL_NguoiDung_NhanVien" Association="Self.FK_QL_NguoiDung_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="QL_NguoiDung" EntitySet="QL_NguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QL_NguoiDungNhomNguoiDung_QL_NguoiDung" Association="Self.FK_QL_NguoiDungNhomNguoiDung_QL_NguoiDung">
+      <End Role="QL_NguoiDung" EntitySet="QL_NguoiDung" />
+      <End Role="QL_NguoiDungNhomNguoiDung" EntitySet="QL_NguoiDungNhomNguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QL_NguoiDungNhomNguoiDung_QL_NhomNguoiDung" Association="Self.FK_QL_NguoiDungNhomNguoiDung_QL_NhomNguoiDung">
+      <End Role="QL_NhomNguoiDung" EntitySet="QL_NhomNguoiDung" />
+      <End Role="QL_NguoiDungNhomNguoiDung" EntitySet="QL_NguoiDungNhomNguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QL_PhanQuyen_DM_ManHinh" Association="Self.FK_QL_PhanQuyen_DM_ManHinh">
+      <End Role="DM_ManHinh" EntitySet="DM_ManHinh" />
+      <End Role="QL_PhanQuyen" EntitySet="QL_PhanQuyen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QL_PhanQuyen_QL_NhomNguoiDung" Association="Self.FK_QL_PhanQuyen_QL_NhomNguoiDung">
+      <End Role="QL_NhomNguoiDung" EntitySet="QL_NhomNguoiDung" />
+      <End Role="QL_PhanQuyen" EntitySet="QL_PhanQuyen" />
     </AssociationSet>
     <AssociationSet Name="FK_Sach_DanhMucSach" Association="Self.FK_Sach_DanhMucSach">
       <End Role="DanhMucSach" EntitySet="DanhMucSach" />

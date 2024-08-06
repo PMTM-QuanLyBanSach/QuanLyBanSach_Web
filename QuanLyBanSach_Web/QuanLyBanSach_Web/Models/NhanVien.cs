@@ -12,18 +12,25 @@ namespace QuanLyBanSach_Web.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DM_ManHinh
+    public partial class NhanVien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DM_ManHinh()
+        public NhanVien()
         {
-            this.QL_PhanQuyen = new HashSet<QL_PhanQuyen>();
+            this.DonHang = new HashSet<DonHang>();
+            this.QL_NguoiDung = new HashSet<QL_NguoiDung>();
         }
     
-        public string MaManHinh { get; set; }
-        public string TenManHinh { get; set; }
+        public string MaNV { get; set; }
+        public string TenNV { get; set; }
+        public string DiaChi { get; set; }
+        public string SDT { get; set; }
+        public string Email { get; set; }
+        public string ChucVu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QL_PhanQuyen> QL_PhanQuyen { get; set; }
+        public virtual ICollection<DonHang> DonHang { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<QL_NguoiDung> QL_NguoiDung { get; set; }
     }
 }

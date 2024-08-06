@@ -36,5 +36,7 @@ namespace QuanLyBanSach_Web.Models
         public virtual DbSet<QL_PhanQuyen> QL_PhanQuyen { get; set; }
         public virtual DbSet<Sach> Sach { get; set; }
         public virtual DbSet<TacGia> TacGia { get; set; }
+        public virtual DbSet<GioHang> GioHang { get; set; }
+        public virtual DbSet<NhanVien> NhanVien { get; set; }
     }
 }

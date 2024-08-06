@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -128,7 +129,13 @@
     <Compile Include="Models\DonHang.cs">
       <DependentUpon>QLBS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GioHang.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>QLBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhanVien.cs">
       <DependentUpon>QLBS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QLBS.Context.cs">
@@ -178,6 +185,8 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -187,6 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

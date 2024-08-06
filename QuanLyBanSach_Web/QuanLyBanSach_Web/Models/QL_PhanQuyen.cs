@@ -17,5 +17,8 @@ namespace QuanLyBanSach_Web.Models
         public string MaNhomNguoiDung { get; set; }
         public string MaManHinh { get; set; }
         public bool CoQuyen { get; set; }
+    
+        public virtual DM_ManHinh DM_ManHinh { get; set; }
+        public virtual QL_NhomNguoiDung QL_NhomNguoiDung { get; set; }
     }
 }

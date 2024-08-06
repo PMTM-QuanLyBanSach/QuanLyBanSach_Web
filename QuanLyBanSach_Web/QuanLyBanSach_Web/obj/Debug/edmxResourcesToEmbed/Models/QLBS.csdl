@@ -26,6 +26,7 @@
     </Key>
     <Property Name="MaManHinh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TenManHinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="QL_PhanQuyen" Relationship="QuanLyBanSachModel.FK_QL_PhanQuyen_DM_ManHinh" FromRole="DM_ManHinh" ToRole="QL_PhanQuyen" />
   </EntityType>
   <EntityType Name="DonHang">
     <Key>
@@ -37,6 +38,8 @@
     <Property Name="TongTien" Type="Decimal" Precision="10" Scale="2" />
     <NavigationProperty Name="ChiTietDonHang" Relationship="Self.FK_ChiTietDonHang_DonHang" FromRole="DonHang" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="KhachHang" Relationship="Self.FK_DonHang_KhachHang" FromRole="DonHang" ToRole="KhachHang" />
+    <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="NhanVien" Relationship="QuanLyBanSachModel.FK_DonHang_NhanVien" FromRole="DonHang" ToRole="NhanVien" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>
@@ -48,6 +51,7 @@
     <Property Name="SDT" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="DonHang" Relationship="Self.FK_DonHang_KhachHang" FromRole="KhachHang" ToRole="DonHang" />
+    <NavigationProperty Name="GioHang" Relationship="QuanLyBanSachModel.FK_GioHang_DonHang" FromRole="KhachHang" ToRole="GioHang" />
   </EntityType>
   <EntityType Name="QL_NguoiDung">
     <Key>
@@ -56,6 +60,9 @@
     <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="HoatDong" Type="Boolean" />
+    <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="NhanVien" Relationship="QuanLyBanSachModel.FK_QL_NguoiDung_NhanVien" FromRole="QL_NguoiDung" ToRole="NhanVien" />
+    <NavigationProperty Name="QL_NguoiDungNhomNguoiDung" Relationship="QuanLyBanSachModel.FK_QL_NguoiDungNhomNguoiDung_QL_NguoiDung" FromRole="QL_NguoiDung" ToRole="QL_NguoiDungNhomNguoiDung" />
   </EntityType>
   <EntityType Name="QL_NguoiDungNhomNguoiDung">
     <Key>
@@ -65,6 +72,8 @@
     <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MaNhomNguoiDung" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="GhiChu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QL_NguoiDung" Relationship="QuanLyBanSachModel.FK_QL_NguoiDungNhomNguoiDung_QL_NguoiDung" FromRole="QL_NguoiDungNhomNguoiDung" ToRole="QL_NguoiDung" />
+    <NavigationProperty Name="QL_NhomNguoiDung" Relationship="QuanLyBanSachModel.FK_QL_NguoiDungNhomNguoiDung_QL_NhomNguoiDung" FromRole="QL_NguoiDungNhomNguoiDung" ToRole="QL_NhomNguoiDung" />
   </EntityType>
   <EntityType Name="QL_NhomNguoiDung">
     <Key>
@@ -73,15 +82,19 @@
     <Property Name="MaNhom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TenNhom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="GhiChu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QL_NguoiDungNhomNguoiDung" Relationship="QuanLyBanSachModel.FK_QL_NguoiDungNhomNguoiDung_QL_NhomNguoiDung" FromRole="QL_NhomNguoiDung" ToRole="QL_NguoiDungNhomNguoiDung" />
+    <NavigationProperty Name="QL_PhanQuyen" Relationship="QuanLyBanSachModel.FK_QL_PhanQuyen_QL_NhomNguoiDung" FromRole="QL_NhomNguoiDung" ToRole="QL_PhanQuyen" />
   </EntityType>
   <EntityType Name="QL_PhanQuyen">
     <Key>
       <PropertyRef Name="MaNhomNguoiDung" />
       <PropertyRef Name="MaManHinh" />
     </Key>
-    <Property Name="MaNhomNguoiDung" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="MaManHinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaNhomNguoiDung" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MaManHinh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CoQuyen" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DM_ManHinh" Relationship="QuanLyBanSachModel.FK_QL_PhanQuyen_DM_ManHinh" FromRole="QL_PhanQuyen" ToRole="DM_ManHinh" />
+    <NavigationProperty Name="QL_NhomNguoiDung" Relationship="QuanLyBanSachModel.FK_QL_PhanQuyen_QL_NhomNguoiDung" FromRole="QL_PhanQuyen" ToRole="QL_NhomNguoiDung" />
   </EntityType>
   <EntityType Name="Sach">
     <Key>
@@ -96,6 +109,8 @@
     <NavigationProperty Name="ChiTietDonHang" Relationship="Self.FK_ChiTietDonHang_Sach" FromRole="Sach" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="DanhMucSach" Relationship="Self.FK_Sach_DanhMucSach" FromRole="Sach" ToRole="DanhMucSach" />
     <NavigationProperty Name="TacGia" Relationship="Self.FK_Sach_TacGia" FromRole="Sach" ToRole="TacGia" />
+    <Property Name="ImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="GioHang" Relationship="QuanLyBanSachModel.FK_GioHang_Sach" FromRole="Sach" ToRole="GioHang" />
   </EntityType>
   <EntityType Name="TacGia">
     <Key>
@@ -197,5 +212,160 @@
       <End Role="TacGia" EntitySet="TacGia" />
       <End Role="Sach" EntitySet="Sach" />
     </AssociationSet>
+    <EntitySet Name="GioHang" EntityType="QuanLyBanSachModel.GioHang" />
+    <EntitySet Name="NhanVien" EntityType="QuanLyBanSachModel.NhanVien" />
+    <AssociationSet Name="FK_QL_PhanQuyen_DM_ManHinh" Association="QuanLyBanSachModel.FK_QL_PhanQuyen_DM_ManHinh">
+      <End Role="DM_ManHinh" EntitySet="DM_ManHinh" />
+      <End Role="QL_PhanQuyen" EntitySet="QL_PhanQuyen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DonHang_NhanVien" Association="QuanLyBanSachModel.FK_DonHang_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="DonHang" EntitySet="DonHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GioHang_DonHang" Association="QuanLyBanSachModel.FK_GioHang_DonHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="GioHang" EntitySet="GioHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GioHang_Sach" Association="QuanLyBanSachModel.FK_GioHang_Sach">
+      <End Role="Sach" EntitySet="Sach" />
+      <End Role="GioHang" EntitySet="GioHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QL_NguoiDung_NhanVien" Association="QuanLyBanSachModel.FK_QL_NguoiDung_NhanVien">
+      <End Role="NhanVien" EntitySet="NhanVien" />
+      <End Role="QL_NguoiDung" EntitySet="QL_NguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QL_NguoiDungNhomNguoiDung_QL_NguoiDung" Association="QuanLyBanSachModel.FK_QL_NguoiDungNhomNguoiDung_QL_NguoiDung">
+      <End Role="QL_NguoiDung" EntitySet="QL_NguoiDung" />
+      <End Role="QL_NguoiDungNhomNguoiDung" EntitySet="QL_NguoiDungNhomNguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QL_NguoiDungNhomNguoiDung_QL_NhomNguoiDung" Association="QuanLyBanSachModel.FK_QL_NguoiDungNhomNguoiDung_QL_NhomNguoiDung">
+      <End Role="QL_NhomNguoiDung" EntitySet="QL_NhomNguoiDung" />
+      <End Role="QL_NguoiDungNhomNguoiDung" EntitySet="QL_NguoiDungNhomNguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QL_PhanQuyen_QL_NhomNguoiDung" Association="QuanLyBanSachModel.FK_QL_PhanQuyen_QL_NhomNguoiDung">
+      <End Role="QL_NhomNguoiDung" EntitySet="QL_NhomNguoiDung" />
+      <End Role="QL_PhanQuyen" EntitySet="QL_PhanQuyen" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="GioHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+      <PropertyRef Name="MaSach" />
+    </Key>
+    <Property Name="MaKH" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="MaSach" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="GiaBan" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="KhachHang" Relationship="QuanLyBanSachModel.FK_GioHang_DonHang" FromRole="GioHang" ToRole="KhachHang" />
+    <NavigationProperty Name="Sach" Relationship="QuanLyBanSachModel.FK_GioHang_Sach" FromRole="GioHang" ToRole="Sach" />
+  </EntityType>
+  <EntityType Name="NhanVien">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ChucVu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DonHang" Relationship="QuanLyBanSachModel.FK_DonHang_NhanVien" FromRole="NhanVien" ToRole="DonHang" />
+    <NavigationProperty Name="QL_NguoiDung" Relationship="QuanLyBanSachModel.FK_QL_NguoiDung_NhanVien" FromRole="NhanVien" ToRole="QL_NguoiDung" />
+  </EntityType>
+  <Association Name="FK_QL_PhanQuyen_DM_ManHinh">
+    <End Type="QuanLyBanSachModel.DM_ManHinh" Role="DM_ManHinh" Multiplicity="1" />
+    <End Type="QuanLyBanSachModel.QL_PhanQuyen" Role="QL_PhanQuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DM_ManHinh">
+        <PropertyRef Name="MaManHinh" />
+      </Principal>
+      <Dependent Role="QL_PhanQuyen">
+        <PropertyRef Name="MaManHinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DonHang_NhanVien">
+    <End Type="QuanLyBanSachModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+    <End Type="QuanLyBanSachModel.DonHang" Role="DonHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="DonHang">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GioHang_DonHang">
+    <End Type="QuanLyBanSachModel.KhachHang" Role="KhachHang" Multiplicity="1" />
+    <End Type="QuanLyBanSachModel.GioHang" Role="GioHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="GioHang">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GioHang_Sach">
+    <End Type="QuanLyBanSachModel.Sach" Role="Sach" Multiplicity="1" />
+    <End Type="QuanLyBanSachModel.GioHang" Role="GioHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sach">
+        <PropertyRef Name="MaSach" />
+      </Principal>
+      <Dependent Role="GioHang">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QL_NguoiDung_NhanVien">
+    <End Type="QuanLyBanSachModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+    <End Type="QuanLyBanSachModel.QL_NguoiDung" Role="QL_NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhanVien">
+        <PropertyRef Name="MaNV" />
+      </Principal>
+      <Dependent Role="QL_NguoiDung">
+        <PropertyRef Name="MaNV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QL_NguoiDungNhomNguoiDung_QL_NguoiDung">
+    <End Type="QuanLyBanSachModel.QL_NguoiDung" Role="QL_NguoiDung" Multiplicity="1" />
+    <End Type="QuanLyBanSachModel.QL_NguoiDungNhomNguoiDung" Role="QL_NguoiDungNhomNguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QL_NguoiDung">
+        <PropertyRef Name="TenDangNhap" />
+      </Principal>
+      <Dependent Role="QL_NguoiDungNhomNguoiDung">
+        <PropertyRef Name="TenDangNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QL_NguoiDungNhomNguoiDung_QL_NhomNguoiDung">
+    <End Type="QuanLyBanSachModel.QL_NhomNguoiDung" Role="QL_NhomNguoiDung" Multiplicity="1" />
+    <End Type="QuanLyBanSachModel.QL_NguoiDungNhomNguoiDung" Role="QL_NguoiDungNhomNguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QL_NhomNguoiDung">
+        <PropertyRef Name="MaNhom" />
+      </Principal>
+      <Dependent Role="QL_NguoiDungNhomNguoiDung">
+        <PropertyRef Name="MaNhomNguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QL_PhanQuyen_QL_NhomNguoiDung">
+    <End Type="QuanLyBanSachModel.QL_NhomNguoiDung" Role="QL_NhomNguoiDung" Multiplicity="1" />
+    <End Type="QuanLyBanSachModel.QL_PhanQuyen" Role="QL_PhanQuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QL_NhomNguoiDung">
+        <PropertyRef Name="MaNhom" />
+      </Principal>
+      <Dependent Role="QL_PhanQuyen">
+        <PropertyRef Name="MaNhomNguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

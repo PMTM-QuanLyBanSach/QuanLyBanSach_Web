@@ -21,6 +21,16 @@
         <AssociationConnector Association="QuanLyBanSachModel.FK_Sach_DanhMucSach" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanSachModel.FK_DonHang_KhachHang" ManuallyRouted="false" />
         <AssociationConnector Association="QuanLyBanSachModel.FK_Sach_TacGia" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.GioHang" Width="1.5" PointX="11.25" PointY="7.75" />
+        <EntityTypeShape EntityType="QuanLyBanSachModel.NhanVien" Width="1.5" PointX="0.75" PointY="6.5" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_QL_PhanQuyen_DM_ManHinh" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_DonHang_NhanVien" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_GioHang_DonHang" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_GioHang_Sach" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_QL_NguoiDung_NhanVien" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_QL_NguoiDungNhomNguoiDung_QL_NguoiDung" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_QL_NguoiDungNhomNguoiDung_QL_NhomNguoiDung" />
+        <AssociationConnector Association="QuanLyBanSachModel.FK_QL_PhanQuyen_QL_NhomNguoiDung" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

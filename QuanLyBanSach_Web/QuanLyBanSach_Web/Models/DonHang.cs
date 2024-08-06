@@ -24,9 +24,11 @@ namespace QuanLyBanSach_Web.Models
         public string MaKH { get; set; }
         public Nullable<System.DateTime> NgayDat { get; set; }
         public Nullable<decimal> TongTien { get; set; }
+        public string MaNV { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHang { get; set; }
         public virtual KhachHang KhachHang { get; set; }
+        public virtual NhanVien NhanVien { get; set; }
     }
 }
