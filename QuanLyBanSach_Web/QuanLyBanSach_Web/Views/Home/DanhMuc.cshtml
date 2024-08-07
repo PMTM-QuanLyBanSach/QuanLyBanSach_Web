@@ -1,6 +1,6 @@
 ﻿@model List<QuanLyBanSach_Web.Models.Sach>
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "DanhMuc";
     Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
@@ -44,25 +44,25 @@
             }
             <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link" href="/Home/Index?page=@PrevP">PrevP </a>
+                    <a class="page-link" href="/Home/DanhMuc?id=@Model[0].MaDanhMuc&page=@PrevP">PrevP </a>
                 </li>
                 @for (int i = 0; i < ViewBag.NoPages; i++)
                 {
                     if (i + 1 == ViewBag.Page)
                     {
                         <li class="page-item active">
-                            <a class="page-link" href="/Home/Index?page=@(i+1)">@(i + 1)</a>
+                            <a class="page-link" href="/Home/DanhMuc?id=@Model[0].MaDanhMuc&page=@(i+1)">@(i + 1)</a>
                         </li>
                     }
                     else
                     {
                         <li class="page-item">
-                            <a class="page-link" href="/Home/Index?page=@(i+1)">@(i + 1)</a>
+                            <a class="page-link" href="/Home/DanhMuc?id=@Model[0].MaDanhMuc&page=@(i+1)">@(i + 1)</a>
                         </li>
                     }
                 }
                 <li class="page-item">
-                    <a class="page-link" href="/Home/Index?page=@NextP">NextP </a>
+                    <a class="page-link" href="/Home/DanhMuc?id=@Model[0].MaDanhMuc&page=@NextP">NextP </a>
                 </li>
             </ul>
         </div>
@@ -75,5 +75,4 @@
         });
     });
 </script>
-
 

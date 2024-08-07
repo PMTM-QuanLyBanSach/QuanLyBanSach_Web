@@ -29,6 +29,7 @@ namespace QuanLyBanSach_Web.Controllers
                 else
                 {
                     GioHang Carts = new GioHang();
+                    Carts.MaKH = "KH001";
                     Carts.MaSach = id;
                     Carts.SoLuong = 1;
                     Carts.Sach = db.Sach.Where(t => t.MaSach == id).FirstOrDefault();

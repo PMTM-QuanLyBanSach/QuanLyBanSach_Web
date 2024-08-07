@@ -30,5 +30,9 @@ namespace QuanLyBanSach_Web.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login");
+        }
     }
 }

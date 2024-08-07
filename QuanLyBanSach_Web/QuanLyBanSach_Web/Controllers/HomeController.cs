@@ -37,5 +37,21 @@ namespace QuanLyBanSach_Web.Controllers
 
             return View(book);
         }
+
+        public ActionResult DanhMuc(int page = 1, string id = "")
+        {
+            List<Sach> books = db.Sach.Where(t => t.MaDanhMuc == id).ToList();
+
+            //Paging
+            int NoRecordPerPage = 8;
+            int NoPage = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(books.Count) / Convert.ToDouble(NoRecordPerPage)));
+            int NoRecordToSkip = (page - 1) * NoRecordPerPage;
+
+            ViewBag.Page = page;
+            ViewBag.NoPages = NoPage;
+            books = books.Skip(NoRecordToSkip).Take(NoRecordPerPage).ToList();
+
+            return View(books);
+        }
     }
 }

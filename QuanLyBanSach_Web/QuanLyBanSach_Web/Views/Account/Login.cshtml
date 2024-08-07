@@ -1,19 +1,19 @@
 ﻿@model QuanLyBanSach_Web.Models.QL_NguoiDung
 @{
     ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    Layout = "~/Views/Shared/_LayoutPageLogin.cshtml";
 }
 
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
     <div class="row w-25 mx-auto">
         <div class="col-md-12">
-            @Html.LabelFor(t => t.TenDangNhap, new { style = "color:white;" })
+            @Html.LabelFor(t => t.TenDangNhap)
             @Html.TextBoxFor(t => t.TenDangNhap, new { placehoder = "UserName", @class = "form-control" })
             @Html.ValidationMessageFor(t => t.TenDangNhap)
         </div>
         <div class="col-md-12">
-            @Html.LabelFor(t => t.MatKhau, new { style = "color:white;" })
+            @Html.LabelFor(t => t.MatKhau)
             @Html.PasswordFor(t => t.MatKhau, new { placehoder = "Password", @class = "form-control" })
             @Html.ValidationMessageFor(t => t.MatKhau)
         </div>
@@ -24,8 +24,7 @@
         </div>
         <div class="col-md-3"></div>
         <div class="col-md-8">
-            <a href="/Home" class="btn btn-outline-secondary mt-3">Cancel</a>
-            <button type="submit" class="btn btn-outline-light text-center mt-3 ms-2">Login</button>
+            <button type="submit" class="btn btn-outline-primary text-center mt-3 ms-3">Login</button>
         </div>
     </div>
 }
