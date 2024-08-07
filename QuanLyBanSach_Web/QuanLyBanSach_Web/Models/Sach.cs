@@ -28,6 +28,7 @@ namespace QuanLyBanSach_Web.Models
         public Nullable<int> SLKho { get; set; }
         public string TenSach { get; set; }
         public string ImageURL { get; set; }
+        public string ChiTiet { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDonHang> ChiTietDonHang { get; set; }

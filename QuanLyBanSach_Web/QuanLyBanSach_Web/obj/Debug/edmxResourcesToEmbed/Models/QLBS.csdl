@@ -109,8 +109,9 @@
     <NavigationProperty Name="ChiTietDonHang" Relationship="Self.FK_ChiTietDonHang_Sach" FromRole="Sach" ToRole="ChiTietDonHang" />
     <NavigationProperty Name="DanhMucSach" Relationship="Self.FK_Sach_DanhMucSach" FromRole="Sach" ToRole="DanhMucSach" />
     <NavigationProperty Name="TacGia" Relationship="Self.FK_Sach_TacGia" FromRole="Sach" ToRole="TacGia" />
-    <Property Name="ImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ImageURL" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="GioHang" Relationship="QuanLyBanSachModel.FK_GioHang_Sach" FromRole="Sach" ToRole="GioHang" />
+    <Property Name="ChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="TacGia">
     <Key>

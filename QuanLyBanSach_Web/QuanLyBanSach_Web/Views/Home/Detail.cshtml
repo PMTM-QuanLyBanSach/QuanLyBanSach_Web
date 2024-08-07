@@ -6,28 +6,28 @@
 
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-5">
             <img src="@Model.ImageURL" height="400px" width="400px" />
         </div>
-        <div class="col-md-9">
+        <div class="col-md-7">
             <div class="row">
-                <p class="fs-2">@Model.TenSach</p>
+                <p class="fs-2 text-white">@Model.TenSach</p>
             </div>
             <div class="row">
-                <p class="fs-6">Tác giả: @Model.TacGia.TenTG</p>
+                <p class="fs-6 text-white">Tác giả: @Model.TacGia.TenTG</p>
             </div>
             <div class="row">
-                <p class="text-danger fw-bold fs-4">@Model.GiaBan.ToString()0 VNĐ</p>
+                <p class="fw-bold fs-4 text-white">@Model.GiaBan.ToString()0 VNĐ</p>
             </div>
             <div class="row mt-4">
                 @using (Html.BeginForm("Add", "Cart", FormMethod.Get))
                 {
-                    <button class="btn btn-primary w-25" type="submit" name="id" value="@Model.MaSach">Buy</button>
+                    <button class="btn btn-light w-25" type="submit" name="id" value="@Model.MaSach">Buy</button>
                 }
             </div>
             <div class="row">
-                <p class="fs-4 mt-4">Chi tiết</p><hr />
-                @*<p>@Model.Detail</p>*@
+                <p class="fs-4 mt-4 text-white">Chi tiết</p><hr />
+                <p class="text-white">@Model.ChiTiet</p>
             </div>
         </div>
     </div>

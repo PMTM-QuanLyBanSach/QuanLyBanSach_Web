@@ -110,7 +110,8 @@
     <Property Name="GiaBan" Type="decimal" Precision="10" Scale="2" />
     <Property Name="SLKho" Type="int" />
     <Property Name="TenSach" Type="nvarchar" MaxLength="200" />
-    <Property Name="ImageURL" Type="varchar" MaxLength="500" />
+    <Property Name="ImageURL" Type="varchar" MaxLength="300" />
+    <Property Name="ChiTiet" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="TacGia">
     <Key>

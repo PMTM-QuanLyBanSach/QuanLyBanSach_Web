@@ -115,7 +115,8 @@
           <Property Name="GiaBan" Type="decimal" Precision="10" Scale="2" />
           <Property Name="SLKho" Type="int" />
           <Property Name="TenSach" Type="nvarchar" MaxLength="200" />
-          <Property Name="ImageURL" Type="varchar" MaxLength="500" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="300" />
+          <Property Name="ChiTiet" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -460,8 +461,9 @@
           <NavigationProperty Name="ChiTietDonHang" Relationship="Self.FK_ChiTietDonHang_Sach" FromRole="Sach" ToRole="ChiTietDonHang" />
           <NavigationProperty Name="DanhMucSach" Relationship="Self.FK_Sach_DanhMucSach" FromRole="Sach" ToRole="DanhMucSach" />
           <NavigationProperty Name="TacGia" Relationship="Self.FK_Sach_TacGia" FromRole="Sach" ToRole="TacGia" />
-          <Property Name="ImageURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="GioHang" Relationship="QuanLyBanSachModel.FK_GioHang_Sach" FromRole="Sach" ToRole="GioHang" />
+          <Property Name="ChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -813,6 +815,7 @@
           <EntitySetMapping Name="Sach">
             <EntityTypeMapping TypeName="QuanLyBanSachModel.Sach">
               <MappingFragment StoreEntitySet="Sach">
+                <ScalarProperty Name="ChiTiet" ColumnName="ChiTiet" />
                 <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
                 <ScalarProperty Name="MaSach" ColumnName="MaSach" />
                 <ScalarProperty Name="MaTG" ColumnName="MaTG" />

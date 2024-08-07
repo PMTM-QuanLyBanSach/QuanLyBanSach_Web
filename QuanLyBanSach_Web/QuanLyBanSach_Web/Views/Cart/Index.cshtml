@@ -1,0 +1,49 @@
+﻿@model List<QuanLyBanSach_Web.Models.GioHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Tot. Price</th>
+        <th>Action</th>
+    </tr>
+    @{int i = 1; decimal? totPrice = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@i</td>
+            <td>@item.Sach.TenSach</td>
+            <td>
+                @using (Html.BeginForm("UpdateQuantity", "Cart", FormMethod.Get))
+                {
+                    <input type="number" value="@item.SoLuong" name="quan" min="1" style="width: 80px;" />
+                    <input type="hidden" name="proid" value="@item.MaSach" />
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                }
+            </td>
+            <td>
+                @{
+                    decimal? Price = item.SoLuong * item.Sach.GiaBan;
+                    i++;
+                    totPrice += Price;
+                }
+                @Price.ToString()0 VND
+            </td>
+            <td>
+                <a href="/Cart/Delete/@item.Sach.MaSach" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4" class="text-center fw-bold">Total Price</td>
+        <td class="text-center fw-bold">@totPrice.ToString()0 VND</td>
+    </tr>
+</table>
+
+<a href="/Home">Back</a>
+

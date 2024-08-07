@@ -89,6 +89,7 @@
     <EntitySetMapping Name="Sach">
       <EntityTypeMapping TypeName="QuanLyBanSachModel.Sach">
         <MappingFragment StoreEntitySet="Sach">
+          <ScalarProperty Name="ChiTiet" ColumnName="ChiTiet" />
           <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
           <ScalarProperty Name="MaSach" ColumnName="MaSach" />
           <ScalarProperty Name="MaTG" ColumnName="MaTG" />
